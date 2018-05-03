@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  city: MyString
+  receiver: MyString
+  notes: MyText
+  invoice_date: 2018-04-09
+  total: 1
+
+two:
+  code: MyString
+  city: MyString
+  receiver: MyString
+  notes: MyText
+  invoice_date: 2018-04-09
+  total: 1

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rfc: MyString
+  social_name: MyString
+  legal_representative: MyString
+  comercial_name: MyString
+  responsible: MyString
+  phone: MyString
+  invoice_count: 
+  total_oil_sum: 
+
+two:
+  rfc: MyString
+  social_name: MyString
+  legal_representative: MyString
+  comercial_name: MyString
+  responsible: MyString
+  phone: MyString
+  invoice_count: 
+  total_oil_sum: 

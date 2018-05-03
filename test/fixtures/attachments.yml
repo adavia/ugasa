@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  file: MyString
+  attacheable: one
+  attacheable_type: Attacheable
+
+two:
+  file: MyString
+  attacheable: two
+  attacheable_type: Attacheable
