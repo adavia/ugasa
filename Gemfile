@@ -38,6 +38,7 @@ gem 'delayed_job_active_record'
 gem 'whenever', require: false
 # ENV variables
 gem 'figaro'
+gem 'nokogiri'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
