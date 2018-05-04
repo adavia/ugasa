@@ -13,10 +13,10 @@
 !/log/.keep
 !/tmp/.keep
 /client
-/config/secrets.yml
-/config/database.yml
 
 .byebug_history
 
 # Ignore application configuration
 /config/application.yml
+/config/secrets.yml
+/config/database.yml
