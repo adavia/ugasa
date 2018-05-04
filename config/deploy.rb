@@ -4,7 +4,7 @@ lock "~> 3.10.2"
 set :rbenv_ruby, '2.4.0'
 
 set :application, "uga"
-set :repo_url, "git@github.com:adavia/ugasa.git"
+set :repo_url, "https://github.com/adavia/ugasa"
 set :branch, "master"
 
 # Default branch is :master
@@ -14,6 +14,8 @@ set :branch, "master"
 set :deploy_to, "/root/uga"
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
+
+after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
