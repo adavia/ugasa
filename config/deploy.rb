@@ -12,6 +12,8 @@ set :repo_url, "/root/git"
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/root/uga"
 
+set :repository, "git@github.com:adavia/ugasa.git"
+set :branch, "master"
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
