@@ -1,14 +1,16 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.2"
 
+set :rbenv_ruby, '2.4.0'
+
 set :application, "uga"
-set :repo_url, "git@github.com:adavia/ugasa.git"
+set :repo_url, "/root/git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/root/uga"
+set :deploy_to, "/root/uga"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -21,7 +23,7 @@ set :deploy_to, "/home/root/uga"
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml"
+append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets"

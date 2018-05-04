@@ -6,7 +6,7 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server '45.63.106.121', user: 'vagrant', roles: %w{app web db}, ssh_options: { forward_agent: true }
+server '45.63.106.121', user: 'root', roles: %w{app web db}, ssh_options: { forward_agent: true }
 
 
 
