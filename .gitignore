@@ -13,6 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 /client
+/config/database.yml
 
 .byebug_history
 
