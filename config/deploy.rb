@@ -4,6 +4,9 @@ lock "~> 3.10.2"
 set :rbenv_ruby, '2.4.0'
 
 set :application, "uga"
+set :user, "deployer"
+set :use_sudo, false
+set :tmp_dir, "/home/deployer/tmp"
 set :repo_url, "https://github.com/adavia/ugasa"
 set :branch, "master"
 
