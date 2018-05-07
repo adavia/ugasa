@@ -30,7 +30,7 @@ append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets"
 
 set :nginx_config_name, "uga"
-set :nginx_server_name, "uga"
+set :nginx_server_name, "45.63.106.121"
 set :puma_workers, 2
 
 # Default value for default_env is {}
