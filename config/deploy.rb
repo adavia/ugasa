@@ -5,7 +5,6 @@ set :rbenv_ruby, '2.4.0'
 
 set :application, "uga"
 set :user, "deployer"
-set :use_sudo, false
 set :tmp_dir, "/home/deployer/tmp"
 set :repo_url, "https://github.com/adavia/ugasa"
 set :branch, "master"
@@ -23,16 +22,15 @@ set :deploy_to, "/home/deployer/uga"
 # set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 
 # Default value for :pty is false
-# set :pty, true
-
+# set :pty, false
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets"
 
-set :nginx_config_name, "uga_dev"
-set :nginx_server_name, "uga"
+set :nginx_config_name, "uga"
+set :nginx_server_name, "45.63.106.121"
 set :puma_workers, 2
 
 # Default value for default_env is {}
