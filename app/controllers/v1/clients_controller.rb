@@ -1,6 +1,12 @@
 module V1
   class ClientsController < ApplicationController
     before_action :set_client, only: [:show, :update, :destroy]
+    skip_before_action :authorize_request, only: :welcome
+
+    # GET /
+    def welcome
+      render json: "UGA Soluciones Ambientales", status: :ok
+    end
 
     # GET /clients
     def index
