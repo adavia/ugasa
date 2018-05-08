@@ -37,6 +37,8 @@ gem 'delayed_job_active_record'
 # Cron jobs
 gem 'whenever', require: false
 # ENV variables
+# CORS
+gem 'rack-cors', :require => 'rack/cors'
 gem 'figaro'
 gem 'nokogiri'
 # Use Capistrano for deployment
