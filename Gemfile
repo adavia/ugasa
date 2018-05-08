@@ -39,8 +39,12 @@ gem 'whenever', require: false
 # ENV variables
 # CORS
 gem 'rack-cors', :require => 'rack/cors'
+# ENV variables
 gem 'figaro'
+# Environment settings
 gem 'nokogiri'
+# Daemons
+gem 'daemons'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -64,6 +68,7 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
   gem 'capistrano-rails-console', require: false
+  gem 'capistrano3-delayed-job', '~> 1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

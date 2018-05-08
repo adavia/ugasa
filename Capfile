@@ -19,6 +19,7 @@ require "capistrano/bundler"
 require "capistrano/rails/migrations"
 require "capistrano/puma"
 require "capistrano/puma/nginx"
+require "capistrano/delayed_job"
 install_plugin Capistrano::Puma  # Default puma tasks
 install_plugin Capistrano::Puma::Nginx 
 install_plugin Capistrano::SCM::Git
