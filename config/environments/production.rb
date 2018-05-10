@@ -80,10 +80,10 @@ Rails.application.configure do
 
   # Mail setup
   ActionMailer::Base.smtp_settings = {
-    user_name:            ENV["mail_username"],
-    password:             ENV["mail_password"],
+    user_name:            ENV["EMAIL_USER"],
+    password:             ENV["EMAIL_PASSWORD"],
     domain:               "ugasa.mx",
-    address:              ENV["mail_address"],
+    address:              ENV["EMAIL_ADDRESS"],
     port:                 587,
     authentication:       :plain,
     openssl_verify_mode:  "none"

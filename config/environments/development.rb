@@ -32,11 +32,11 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              ENV["mail_address"],
+    address:              ENV["EMAIL_ADDRESS"],
     port:                 587,
     domain:               "gmail.com",
-    user_name:            ENV["mail_username"],
-    password:             ENV["mail_password"],
+    user_name:            ENV["EMAIL_USER"],
+    password:             ENV["EMAIL_PASSWORD"],
     authentication:       "plain",
     enable_starttls_auto: true
   }
