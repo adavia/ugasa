@@ -5,5 +5,7 @@ class ContractSerializer < ActiveModel::Serializer
     :contract_end,
     :contact,
     :address,
+    :bank_name,
+    :bank_account,
     :_destroy
 end

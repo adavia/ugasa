@@ -1,7 +1,8 @@
 module V1
   class InvoicesController < ApplicationController
+    skip_before_action :authorize_request, only: [:download_monthly_email, :download_annual_email]
     before_action :set_client, except: [:unique_code, :search, 
-      :report, :send_monthly_email, :send_annual_email]
+      :report, :send_monthly_email, :send_annual_email, :download_monthly_email, :download_annual_email]
     before_action :set_client_invoice, only: [:show, :update, :destroy]
 
     # GET /clients/:client_id/invoices
@@ -28,7 +29,7 @@ module V1
       Invoice.transaction do
         invoice = @client.invoices.create!(invoice_params)
         @client.update_column(:total_oil_sum, @client.total_oil_sum += invoice.total)
-        render json: invoice, meta: { total_invoices: Invoice.all.count }, status: :created
+        render json: invoice, meta: { total_invoices: @client.invoices.count }, status: :created
       end
     end
 
@@ -87,6 +88,37 @@ module V1
         each_serializer: ReportSerializer, 
         status: :ok
       )
+    end
+
+    def download_monthly_email
+      @invoices = Invoice.joins(:client)
+      @total = @invoices.monthly_email(params).sum(:total)
+      if @total != 0
+        @month = I18n.l(DateTime.parse(Date::MONTHNAMES[params[:month].to_i]), format: "%B")
+        @year = params[:year]
+        @date = "#{@month}_#{@year}"
+        pdf = MonthlyReportPdf.new(@invoices.first.client, @date, @total)
+        send_data pdf.render,
+          filename: "reporte_uga_#{@date}.pdf",
+          type: 'application/pdf',
+          disposition: 'attachment'
+      end
+    end
+
+    def download_annual_email
+      @invoices = Invoice.select("MONTH(invoice_date) AS month, SUM(total) AS total")
+      .joins(:client)
+      .report(params)
+      if @invoices.length > 0 
+        @client = Client.find(params[:client])
+        @year = params[:year]
+        @report = @invoices.map { |i| [I18n.l(DateTime.parse(Date::MONTHNAMES[i.month]), format: "%B"), i.total] }.to_h
+        pdf = AnnualReportPdf.new(@client, @report, @year)
+        send_data pdf.render,
+          filename: "reporte_uga_#{@year}.pdf",
+          type: 'application/pdf',
+          disposition: 'attachment'
+      end
     end
 
      # Send email report

@@ -5,7 +5,7 @@ class Client < ApplicationRecord
   has_many :attachments, as: :attacheable, dependent: :destroy
 
   # Pagination
-  self.per_page = 15
+  self.per_page = 16
 
   # Nested attributes
   accepts_nested_attributes_for :contract, allow_destroy: true

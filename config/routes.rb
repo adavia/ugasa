@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :users, except: :show
 
     get  "invoices/unique", to: "invoices#unique_code"
+    get  "invoices/download/monthly", to: "invoices#download_monthly_email"
+    get  "invoices/download/annual", to: "invoices#download_annual_email"
     post "invoices/search", to: "invoices#search"
     post "invoices/report", to: "invoices#report"
     post "invoices/report/monthly", to: "invoices#send_monthly_email"

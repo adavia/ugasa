@@ -12,7 +12,7 @@ module V1
     def index
       if params[:value].present?
         @clients = Client.search(params[:value])
-          .order(social_name: 'ASC')
+          .order(comercial_name: 'ASC')
           .page(params[:page])
           .includes(:contract, :emails)
       else
@@ -69,6 +69,8 @@ module V1
           :contract_end,
           :contact,
           :address,
+          :bank_name,
+          :bank_account,
           :_destroy
         ],
         emails_attributes: [ :id, :address, :_destroy ]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430210746) do
+ActiveRecord::Schema.define(version: 20180820161950) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "file"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20180430210746) do
     t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bank_name"
+    t.string "bank_account"
     t.index ["client_id"], name: "index_contracts_on_client_id"
   end
 
