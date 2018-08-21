@@ -13,6 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 /client
+/public/uploads
 
 .byebug_history
 

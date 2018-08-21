@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     resources :clients do
       resources :invoices
-      resources :attachments
+      resources :attachments, except: :update
     end
   end
 end

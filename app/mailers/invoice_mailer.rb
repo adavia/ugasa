@@ -1,5 +1,5 @@
 class InvoiceMailer < ApplicationMailer
-  default from: "info@ugasa.com"
+  default from: "info@ugasa.mx"
 
   def send_monthly_report(client, date, total)
     @client = client
