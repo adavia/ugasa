@@ -21,5 +21,7 @@ Rails.application.routes.draw do
       resources :invoices
       resources :attachments, except: :update
     end
+
+    resources :locations, only: [:index, :create, :destroy]
   end
 end

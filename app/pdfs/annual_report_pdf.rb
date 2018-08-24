@@ -65,7 +65,7 @@ class AnnualReportPdf
       move_down 15
       text "Le informo que durante el año <b>#{@year}</b> recolectamos la siguiente cantidad de Litros de Aceite Vegetal Usado en nuestra visita a su establecimiento.", inline_format: true, align: :justify, color: "959595"
       move_down 15
-      chart data, colors: %w(547C46)
+      chart data, colors: %w(547C46), labels: [true]
       move_down 15
       text "Agradeciendo su atención, le envió un cordial saludo.", style: :bold, color: "959595"  
     end

@@ -14,12 +14,12 @@ module V1
         @clients = Client.search(params[:value])
           .order(comercial_name: 'ASC')
           .page(params[:page])
-          .includes(:contract, :emails)
+          .includes(:contract, :emails, :location)
       else
         @clients = Client
-          .order(social_name: 'ASC')
+          .order(comercial_name: 'ASC')
           .page(params[:page])
-          .includes(:contract, :emails)
+          .includes(:contract, :emails, :location)
       end
       render( 
         json: @clients, 
@@ -61,7 +61,7 @@ module V1
         :comercial_name,
         :responsible,
         :phone,
-        :zone,
+        :location_id,
         contract_attributes: [
           :id,
           :oil_payment,

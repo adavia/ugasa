@@ -7,12 +7,20 @@ class ClientSerializer < ActiveModel::Serializer
     :comercial_name,
     :responsible,
     :phone,
-    :zone,
+    :location,
+    :contract,
     :total_oil_sum,
     :invoices_count
 
-  has_one :contract
   has_many :emails
+
+  def location
+    object.location
+  end
+
+  def contract
+    object.contract
+  end
 
   def identicon
     Digest::SHA1.hexdigest(object.social_name) 

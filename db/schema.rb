@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180820161950) do
+ActiveRecord::Schema.define(version: 20180823142038) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "file"
@@ -28,11 +28,12 @@ ActiveRecord::Schema.define(version: 20180820161950) do
     t.string "comercial_name"
     t.string "responsible"
     t.string "phone"
-    t.string "zone"
     t.integer "invoices_count", default: 0
     t.integer "total_oil_sum", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_clients_on_location_id"
   end
 
   create_table "contracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -85,6 +86,12 @@ ActiveRecord::Schema.define(version: 20180820161950) do
     t.index ["code"], name: "index_invoices_on_code", unique: true
   end
 
+  create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "zone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "username"
     t.string "email"
@@ -95,6 +102,7 @@ ActiveRecord::Schema.define(version: 20180820161950) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "clients", "locations"
   add_foreign_key "contracts", "clients"
   add_foreign_key "emails", "clients"
   add_foreign_key "invoices", "clients"

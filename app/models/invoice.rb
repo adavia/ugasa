@@ -34,7 +34,7 @@ class Invoice < ApplicationRecord
     invoices = order(invoice_date: "ASC")
     invoices = invoices.where("clients.id = ?", params["client"]) if params["client"].present?
     invoices = invoices.where("code = ?", params["code"]) if params["code"].present?
-    invoices = invoices.where("clients.zone = ?", params["zone"]) if params["zone"].present?
+    invoices = invoices.where("clients.location_id = ?", params["zone"]) if params["zone"].present?
     invoices = invoices.where("clients.responsible = ?", params["responsible"]) if params["responsible"].present?
     invoices = invoices.where("MONTH(invoice_date) = ?", params["month"]) if params["month"].present?
     invoices = invoices.where("YEAR(invoice_date) = ?", params["year"]) if params["year"].present?
