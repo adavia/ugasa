@@ -31,7 +31,7 @@ class Invoice < ApplicationRecord
   private
 
   def self.find_invoices(params)
-    invoices = order(invoice_date: "ASC")
+    invoices = order(invoice_date: "DESC")
     invoices = invoices.where("clients.id = ?", params["client"]) if params["client"].present?
     invoices = invoices.where("code = ?", params["code"]) if params["code"].present?
     invoices = invoices.where("clients.location_id = ?", params["zone"]) if params["zone"].present?

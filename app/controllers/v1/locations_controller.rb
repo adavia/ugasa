@@ -5,12 +5,13 @@ module V1
     # GET /locations
     def index
       if params[:value].present?
-        @locations = Location.search(params[:value]).order(zone: 'ASC').limit(20)
+        @locations = Location.search(params[:value]).order(zone: 'ASC').page(params[:page])
       else
-        @locations = Location.order(zone: 'ASC').limit(20)
+        @locations = Location.order(zone: 'ASC').page(params[:page])
       end
       render( 
         json: @locations, 
+        meta: { total_locations: @locations.total_entries }, 
         status: :ok
       )
     end
@@ -23,7 +24,12 @@ module V1
 
     def destroy
       @location.destroy
-      render json: @location, status: :ok
+      @locations = Location.order(zone: 'ASC').page(params[:page])
+      render( 
+        json: @locations, 
+        meta: { total_locations: @locations.total_entries }, 
+        status: :ok
+      )
     end
 
     private

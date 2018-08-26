@@ -8,7 +8,7 @@ module V1
     # GET /clients/:client_id/invoices
     def index
       @invoices = Invoice
-        .order(created_at: 'DESC')
+        .order(invoice_date: 'DESC')
         .page(params[:page])
         .includes(:client)
         .where(client: @client)
@@ -48,7 +48,12 @@ module V1
       Invoice.transaction do
         @client.update_column(:total_oil_sum, @client.total_oil_sum -= @invoice.total)
         @invoice.destroy
-        render json: @invoice, meta: { total_invoices: Invoice.all.count }, status: :ok
+        @invoices = Invoice
+          .order(invoice_date: 'DESC')
+          .page(params[:page])
+          .includes(:client)
+          .where(client: @client)
+        render json: @invoices, meta: { total_invoices: @invoices.total_entries }, status: :ok
       end
     end
 
