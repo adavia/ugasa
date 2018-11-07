@@ -96,13 +96,14 @@ module V1
     end
 
     def download_monthly_email
+      @client = Client.find(params[:client])
       @invoices = Invoice.joins(:client)
       @total = @invoices.monthly_email(params).sum(:total)
       if @total != 0
         @month = I18n.l(DateTime.parse(Date::MONTHNAMES[params[:month].to_i]), format: "%B")
         @year = params[:year]
         @date = "#{@month}_#{@year}"
-        pdf = MonthlyReportPdf.new(@invoices.first.client, @date, @total)
+        pdf = MonthlyReportPdf.new(@client, @date, @total)
         send_data pdf.render,
           filename: "reporte_uga_#{@date}.pdf",
           type: 'application/pdf',
@@ -128,6 +129,7 @@ module V1
 
      # Send email report
      def send_monthly_email
+      @client = Client.find(params[:client])
       @invoices = Invoice.joins(:client)
       @total = @invoices.monthly_email(params[:invoice]).sum(:total)
 
@@ -135,7 +137,7 @@ module V1
         @month = I18n.l(DateTime.parse(Date::MONTHNAMES[params[:invoice][:month].to_i]), format: "%B")
         @year = params[:invoice][:year]
         @report_date = "#{@month}_#{@year}"
-        SendMonthlyEmailJob.set(wait: 10.seconds).perform_later(@invoices.first.client, @report_date, @total)
+        SendMonthlyEmailJob.set(wait: 10.seconds).perform_later(@client, @report_date, @total)
         render(
           json: { message: "An email report has been sent successfully to this client" }, 
           status: :ok

@@ -56,7 +56,7 @@ class AnnualReportPdf
 
     # The bounding_box takes the x and y coordinates for positioning its content and some options to style it
     bounding_box([0, y_position], :width => 540) do
-      text @client.social_name.upcase, size: 15, style: :bold, color: "959595"
+      text @client.comercial_name.upcase, size: 15, style: :bold, color: "959595"
       move_down 8
       text "PRESENTE", leading: 15, color: "959595"
       text "La recolección de Aceite Vegetal Usado (AVU), residuo de su operación normal, forma parte fundamental de un movimiento, que deseamos se convierta en costumbre, para que otros emprendedores como nosotros, desarrollen formas de reciclaje y protección al Medio Ambiente.", align: :justify, color: "959595"
