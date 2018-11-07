@@ -129,7 +129,7 @@ module V1
 
      # Send email report
      def send_monthly_email
-      @client = Client.find(params[:client])
+      @client = Client.find(params[:invoice][:client])
       @invoices = Invoice.joins(:client)
       @total = @invoices.monthly_email(params[:invoice]).sum(:total)
 
